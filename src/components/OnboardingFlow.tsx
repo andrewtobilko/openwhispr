@@ -786,9 +786,11 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
                 {t("onboarding.activation.mode")}
               </span>
               <p className="text-xs text-muted-foreground/70 mt-0.5">
-                {activationMode === "tap"
-                  ? t("onboarding.activation.tapDescription")
-                  : t("onboarding.activation.holdDescription")}
+                {activationMode === "push"
+                  ? t("onboarding.activation.holdDescription")
+                  : activationMode === "doubleTap"
+                    ? t("onboarding.activation.doubleTapDescription")
+                    : t("onboarding.activation.tapDescription")}
               </p>
             </div>
             <ActivationModeSelector value={activationMode} onChange={setActivationMode} />
@@ -803,9 +805,12 @@ export default function OnboardingFlow({ onComplete }: OnboardingFlowProps) {
             {t("onboarding.activation.test")}
           </span>
           <span className="text-xs text-muted-foreground/60">
-            {activationMode === "tap" || (isUsingNativeShortcut && getCachedPlatform() !== "linux")
-              ? t("onboarding.activation.hotkeyToStartStop", { hotkey: readableHotkey })
-              : t("onboarding.activation.holdHotkey", { hotkey: readableHotkey })}
+            {activationMode === "push" &&
+            !(isUsingNativeShortcut && getCachedPlatform() !== "linux")
+              ? t("onboarding.activation.holdHotkey", { hotkey: readableHotkey })
+              : activationMode === "doubleTap"
+                ? t("onboarding.activation.doubleTapHotkey", { hotkey: readableHotkey })
+                : t("onboarding.activation.hotkeyToStartStop", { hotkey: readableHotkey })}
           </span>
         </div>
         <Textarea

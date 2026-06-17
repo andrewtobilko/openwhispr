@@ -149,6 +149,7 @@
     "hold": "Maintenir",
     "private": "Privé",
     "tap": "Appui",
+    "doubleTap": "Double appui",
     "close": "Fermer",
     "dismiss": "Ignorer",
     "save": "Enregistrer",
@@ -213,9 +214,11 @@
       "mode": "Mode",
       "tapDescription": "Appuyer pour démarrer/arrêter",
       "holdDescription": "Maintenir pendant que vous parlez",
+      "doubleTapDescription": "Appuyer deux fois pour démarrer, une fois pour arrêter",
       "test": "Test",
       "hotkeyToStartStop": "{{hotkey}} pour démarrer/arrêter",
       "holdHotkey": "Maintenir {{hotkey}}",
+      "doubleTapHotkey": "Appuyer deux fois sur {{hotkey}} pour démarrer, une fois pour arrêter",
       "textareaPlaceholder": "Cliquez ici puis utilisez votre raccourci pour dicter..."
     },
     "voiceAgent": {

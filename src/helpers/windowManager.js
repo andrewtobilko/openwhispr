@@ -216,7 +216,9 @@ class WindowManager {
 
   createHotkeyCallback() {
     let lastToggleTime = 0;
+    let lastDoubleTapTime = 0;
     const DEBOUNCE_MS = 150;
+    const DOUBLE_TAP_THRESHOLD_MS = 350;
 
     // globalShortcut registrations pass the hotkey that fired; native-shortcut
     // backends invoke the callback bare (their slot holds only the primary).
@@ -236,6 +238,29 @@ class WindowManager {
         currentHotkey.includes("+")
       ) {
         this.startMacCompoundPushToTalk(currentHotkey);
+        return;
+      }
+
+      if (activationMode === "doubleTap") {
+        if (process.platform !== "darwin") {
+          return;
+        }
+
+        if (this._isDictatingToggle) {
+          lastDoubleTapTime = 0;
+          this.sendStopDictation();
+          return;
+        }
+
+        const now = Date.now();
+        if (now - lastDoubleTapTime > DOUBLE_TAP_THRESHOLD_MS) {
+          lastDoubleTapTime = now;
+          return;
+        }
+
+        lastDoubleTapTime = 0;
+        if (this.textEditMonitor) this.textEditMonitor.captureTargetPid();
+        this.sendToggleDictation();
         return;
       }
 
@@ -472,6 +497,10 @@ class WindowManager {
     this._sendDictationToggle("toggle-voice-agent");
   }
 
+  isDictationToggleActive() {
+    return this._isDictatingToggle;
+  }
+
   sendStartDictation() {
     if (this.hotkeyManager.isInListeningMode()) {
       return;
@@ -510,7 +539,7 @@ class WindowManager {
   }
 
   setActivationModeCache(mode) {
-    this._cachedActivationMode = mode === "push" ? "push" : "tap";
+    this._cachedActivationMode = mode === "push" || mode === "doubleTap" ? mode : "tap";
   }
 
   /**

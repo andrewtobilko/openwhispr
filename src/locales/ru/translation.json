@@ -149,6 +149,7 @@
     "hold": "Удержание",
     "private": "Приватный",
     "tap": "Нажатие",
+    "doubleTap": "Двойное нажатие",
     "close": "Закрыть",
     "dismiss": "Скрыть",
     "save": "Speichern",
@@ -213,9 +214,11 @@
       "mode": "Режим",
       "tapDescription": "Нажмите для старта/остановки",
       "holdDescription": "Удерживайте во время речи",
+      "doubleTapDescription": "Двойное нажатие запускает, одиночное останавливает",
       "test": "Тест",
       "hotkeyToStartStop": "{{hotkey}} для старта/остановки",
       "holdHotkey": "Удерживайте {{hotkey}}",
+      "doubleTapHotkey": "Дважды нажмите {{hotkey}} для старта, один раз для остановки",
       "textareaPlaceholder": "Нажмите сюда и используйте горячую клавишу для диктовки..."
     },
     "voiceAgent": {

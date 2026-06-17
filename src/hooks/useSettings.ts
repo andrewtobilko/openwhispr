@@ -2,7 +2,12 @@ import React, { createContext, useCallback, useContext, useEffect, useRef } from
 import { useSettingsStore, initializeSettings } from "../stores/settingsStore";
 import logger from "../utils/logger";
 import { useLocalStorage } from "./useLocalStorage";
-import type { LocalTranscriptionProvider, InferenceMode, SelfHostedType } from "../types/electron";
+import type {
+  LocalTranscriptionProvider,
+  InferenceMode,
+  SelfHostedType,
+  ActivationMode,
+} from "../types/electron";
 import type { Snippet } from "../utils/snippets";
 
 export interface TranscriptionSettings {
@@ -49,7 +54,7 @@ export interface HotkeySettings {
   meetingKey: string;
   voiceAgentKey: string;
   meetingHotkeyLayoutMode: "side-panel" | "full-width";
-  activationMode: "tap" | "push";
+  activationMode: ActivationMode;
 }
 
 export interface OnboardingSettings {

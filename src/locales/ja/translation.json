@@ -149,6 +149,7 @@
     "hold": "ホールド",
     "private": "プライベート",
     "tap": "タップ",
+    "doubleTap": "ダブルタップ",
     "close": "閉じる",
     "dismiss": "閉じる",
     "save": "Guardar",
@@ -213,9 +214,11 @@
       "mode": "モード",
       "tapDescription": "押して開始/停止",
       "holdDescription": "押しながら話す",
+      "doubleTapDescription": "2回押して開始、1回押して停止",
       "test": "テスト",
       "hotkeyToStartStop": "{{hotkey}} で開始/停止",
       "holdHotkey": "{{hotkey}} を押し続ける",
+      "doubleTapHotkey": "{{hotkey}} を2回押して開始、1回押して停止",
       "textareaPlaceholder": "ここをクリックしてホットキーでディクテーション..."
     },
     "voiceAgent": {

@@ -6,6 +6,8 @@ export type InferenceMode = "openwhispr" | "providers" | "local" | "self-hosted"
 
 export type SelfHostedType = "openai-compatible" | "lan";
 
+export type ActivationMode = "tap" | "push" | "doubleTap";
+
 export type TranscriptionStatus = "completed" | "failed" | "pending" | "discarded";
 
 export type TranscriptionErrorCode =
@@ -1138,8 +1140,8 @@ declare global {
       saveDictationKey?: (key: string) => Promise<void>;
 
       // Activation mode persistence (file-based for reliable startup)
-      getActivationMode?: () => Promise<"tap" | "push">;
-      saveActivationMode?: (mode: "tap" | "push") => Promise<void>;
+      getActivationMode?: () => Promise<ActivationMode>;
+      saveActivationMode?: (mode: ActivationMode) => Promise<void>;
 
       // Debug logging
       getLogLevel?: () => Promise<string>;
@@ -1182,7 +1184,7 @@ declare global {
       openWhisperModelsFolder?: () => Promise<{ success: boolean; error?: string }>;
 
       // Windows Push-to-Talk notifications
-      notifyActivationModeChanged?: (mode: "tap" | "push") => void;
+      notifyActivationModeChanged?: (mode: ActivationMode) => void;
       notifyHotkeyChanged?: (hotkey: string) => void;
       registerMeetingHotkey?: (hotkey: string) => Promise<{ success: boolean; message?: string }>;
       notifyFloatingIconAutoHideChanged?: (enabled: boolean) => void;

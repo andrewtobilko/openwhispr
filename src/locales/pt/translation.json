@@ -128,6 +128,7 @@
     "hold": "Segurar",
     "private": "Privado",
     "tap": "Toque",
+    "doubleTap": "Toque duplo",
     "close": "Fechar",
     "dismiss": "Dispensar",
     "save": "Guardar",
@@ -192,9 +193,11 @@
       "mode": "Modo",
       "tapDescription": "Pressione para iniciar/parar",
       "holdDescription": "Segure enquanto fala",
+      "doubleTapDescription": "Toque duas vezes para iniciar, uma vez para parar",
       "test": "Teste",
       "hotkeyToStartStop": "{{hotkey}} para iniciar/parar",
       "holdHotkey": "Segure {{hotkey}}",
+      "doubleTapHotkey": "Toque duas vezes em {{hotkey}} para iniciar, uma vez para parar",
       "textareaPlaceholder": "Clique aqui e use seu atalho para ditar..."
     },
     "voiceAgent": {

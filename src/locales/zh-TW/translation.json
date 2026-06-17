@@ -149,6 +149,7 @@
     "hold": "按住",
     "private": "私密",
     "tap": "點按",
+    "doubleTap": "雙擊",
     "close": "關閉",
     "dismiss": "忽略",
     "save": "Guardar",
@@ -213,9 +214,11 @@
       "mode": "模式",
       "tapDescription": "按一下開始/停止",
       "holdDescription": "按住時說話",
+      "doubleTapDescription": "雙擊開始，單擊停止",
       "test": "測試",
       "hotkeyToStartStop": "{{hotkey}} 開始/停止",
       "holdHotkey": "按住 {{hotkey}}",
+      "doubleTapHotkey": "雙擊 {{hotkey}} 開始，單擊停止",
       "textareaPlaceholder": "點擊這裡，然後使用快捷鍵開始語音輸入..."
     },
     "voiceAgent": {
