@@ -164,6 +164,7 @@
     "hold": "Mantener",
     "private": "Privado",
     "tap": "Pulsar",
+    "doubleTap": "Doble pulsación",
     "close": "Cerrar",
     "dismiss": "Descartar",
     "save": "Guardar",
@@ -231,9 +232,11 @@
       "mode": "Modo",
       "tapDescription": "Pulsa para iniciar/detener",
       "holdDescription": "Mantén pulsado mientras hablas",
+      "doubleTapDescription": "Pulsa dos veces para iniciar, una vez para detener",
       "test": "Prueba",
       "hotkeyToStartStop": "{{hotkey}} para iniciar/detener",
       "holdHotkey": "Mantener {{hotkey}}",
+      "doubleTapHotkey": "Pulsa dos veces {{hotkey}} para iniciar, una vez para detener",
       "textareaPlaceholder": "Haz clic aquí y usa tu atajo para dictar..."
     },
     "voiceAgent": {

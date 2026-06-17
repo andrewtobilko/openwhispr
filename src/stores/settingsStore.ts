@@ -10,6 +10,7 @@ import type {
   LocalTranscriptionProvider,
   InferenceMode,
   SelfHostedType,
+  ActivationMode,
 } from "../types/electron";
 import type { CalendarAccount } from "../types/calendar";
 import { PROMPT_KIND_LIST, type PromptKind } from "../config/prompts/registry";
@@ -859,7 +860,7 @@ export interface SettingsState
   setMeetingHotkeyLayoutMode: (mode: "side-panel" | "full-width") => void;
   setOnboardingUseCases: (useCases: string[]) => void;
   setOnboardingUseCaseNote: (note: string) => void;
-  setActivationMode: (mode: "tap" | "push") => void;
+  setActivationMode: (mode: ActivationMode) => void;
 
   setPreferBuiltInMic: (value: boolean) => void;
   setSelectedMicDevice: (deviceId: string, label: string) => void;
@@ -1254,8 +1255,10 @@ export const useSettingsStore = create<SettingsState>()((set, get) => ({
   meetingHotkeyLayoutMode: (readString("meetingHotkeyLayoutMode", "full-width") === "side-panel"
     ? "side-panel"
     : "full-width") as "side-panel" | "full-width",
-  activationMode: (readString("activationMode", "tap") === "push" ? "push" : "tap") as
-    "tap" | "push",
+  activationMode: ((): ActivationMode => {
+    const mode = readString("activationMode", "tap");
+    return mode === "push" || mode === "doubleTap" ? mode : "tap";
+  })(),
 
   preferBuiltInMic: readBoolean("preferBuiltInMic", true),
   selectedMicDeviceId: readString("selectedMicDeviceId", ""),
@@ -1976,7 +1979,7 @@ export const useSettingsStore = create<SettingsState>()((set, get) => ({
 
   setOnboardingUseCaseNote: createStringSetter("onboardingUseCaseNote"),
 
-  setActivationMode: (mode: "tap" | "push") => {
+  setActivationMode: (mode: ActivationMode) => {
     if (isBrowser) localStorage.setItem("activationMode", mode);
     set({ activationMode: mode });
     if (isBrowser) {

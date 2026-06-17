@@ -164,6 +164,7 @@
     "hold": "Halten",
     "private": "Privat",
     "tap": "Tippen",
+    "doubleTap": "Doppeltippen",
     "close": "Schließen",
     "dismiss": "Verwerfen",
     "save": "Speichern",
@@ -231,9 +232,11 @@
       "mode": "Modus",
       "tapDescription": "Drücken zum Starten/Stoppen",
       "holdDescription": "Gedrückt halten beim Sprechen",
+      "doubleTapDescription": "Doppeltippen zum Starten, Tippen zum Stoppen",
       "test": "Test",
       "hotkeyToStartStop": "{{hotkey}} zum Starten/Stoppen",
       "holdHotkey": "{{hotkey}} gedrückt halten",
+      "doubleTapHotkey": "{{hotkey}} doppeltippen zum Starten, tippen zum Stoppen",
       "textareaPlaceholder": "Hier klicken und Hotkey zum Diktieren verwenden..."
     },
     "voiceAgent": {

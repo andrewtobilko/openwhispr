@@ -1,7 +1,6 @@
-import { MousePointerClick, MicVocal } from "lucide-react";
+import { MousePointer2, MousePointerClick, MicVocal } from "lucide-react";
 import { useTranslation } from "react-i18next";
-
-type ActivationMode = "tap" | "push";
+import type { ActivationMode } from "../../types/electron";
 
 interface ActivationModeSelectorProps {
   value: ActivationMode;
@@ -12,6 +11,7 @@ interface ActivationModeSelectorProps {
 const OPTIONS = [
   { mode: "tap", Icon: MousePointerClick, labelKey: "common.tap" },
   { mode: "push", Icon: MicVocal, labelKey: "common.hold" },
+  { mode: "doubleTap", Icon: MousePointer2, labelKey: "common.doubleTap" },
 ] as const;
 
 export function ActivationModeSelector({
@@ -20,6 +20,10 @@ export function ActivationModeSelector({
   disabled = false,
 }: ActivationModeSelectorProps) {
   const { t } = useTranslation();
+  const activeIndex = Math.max(
+    OPTIONS.findIndex((option) => option.mode === value),
+    0
+  );
 
   return (
     <div
@@ -32,11 +36,14 @@ export function ActivationModeSelector({
       {/* Sliding indicator */}
       <div
         className={`
-          absolute top-0.5 bottom-0.5 w-[calc(50%-2px)] rounded
+          absolute top-0.5 bottom-0.5 rounded
           bg-surface-raised border border-border-subtle
           transition-transform duration-200 ease-out
-          ${value === "push" ? "translate-x-[calc(100%+4px)]" : "translate-x-0"}
         `}
+        style={{
+          width: `calc(${100 / OPTIONS.length}% - 2px)`,
+          transform: `translateX(calc(${activeIndex * 100}% + ${activeIndex * 4}px))`,
+        }}
       />
 
       {OPTIONS.map(({ mode, Icon, labelKey }) => (
@@ -46,7 +53,7 @@ export function ActivationModeSelector({
           disabled={disabled}
           onClick={() => onChange(mode)}
           className={`
-            relative z-10 flex-1 flex items-center justify-center gap-1 rounded px-2.5 py-1
+            relative z-10 flex-1 flex items-center justify-center gap-1 rounded px-2 py-1
             transition-colors duration-150
             ${disabled ? "cursor-not-allowed" : "cursor-pointer"}
             ${value === mode ? "text-foreground" : "text-muted-foreground hover:text-foreground"}

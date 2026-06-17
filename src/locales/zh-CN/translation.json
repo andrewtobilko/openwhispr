@@ -164,6 +164,7 @@
     "hold": "按住",
     "private": "隐私",
     "tap": "点按",
+    "doubleTap": "双击",
     "close": "关闭",
     "dismiss": "忽略",
     "save": "保存",
@@ -231,9 +232,11 @@
       "mode": "模式",
       "tapDescription": "按下开始/停止",
       "holdDescription": "按住说话",
+      "doubleTapDescription": "双击开始，单击停止",
       "test": "测试",
       "hotkeyToStartStop": "{{hotkey}} 开始/停止",
       "holdHotkey": "按住 {{hotkey}}",
+      "doubleTapHotkey": "双击 {{hotkey}} 开始，单击停止",
       "textareaPlaceholder": "点击此处，然后使用快捷键进行听写..."
     },
     "voiceAgent": {

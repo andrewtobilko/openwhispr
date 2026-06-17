@@ -1263,8 +1263,12 @@ async function startApp() {
     let globeKeyDownTime = 0;
     let globeKeyIsRecording = false;
     let globeLastStopTime = 0;
+    let globeLastTapTime = 0;
+    let rightModLastTapTime = 0;
+    let rightModLastTapModifier = null;
     const MIN_HOLD_DURATION_MS = 150;
     const POST_STOP_COOLDOWN_MS = 300;
+    const DOUBLE_TAP_THRESHOLD_MS = 350;
 
     globeKeyManager.on("globe-down", async () => {
       const currentHotkey = hotkeyManager.getCurrentHotkey && hotkeyManager.getCurrentHotkey();
@@ -1305,6 +1309,20 @@ async function startApp() {
                 windowManager.sendStartDictation();
               }
             }, MIN_HOLD_DURATION_MS);
+          } else if (activationMode === "doubleTap") {
+            if (windowManager.isDictationToggleActive?.()) {
+              globeLastTapTime = 0;
+              windowManager.sendStopDictation();
+            } else {
+              const now = Date.now();
+              if (now - globeLastTapTime <= DOUBLE_TAP_THRESHOLD_MS) {
+                globeLastTapTime = 0;
+                if (textEditMonitor) textEditMonitor.captureTargetPid();
+                windowManager.sendToggleDictation();
+              } else {
+                globeLastTapTime = now;
+              }
+            }
           } else {
             windowManager.sendToggleDictation();
           }
@@ -1430,6 +1448,26 @@ async function startApp() {
             windowManager.sendStartDictation();
           }
         }, MIN_HOLD_DURATION_MS);
+      } else if (activationMode === "doubleTap") {
+        if (windowManager.isDictationToggleActive?.()) {
+          rightModLastTapTime = 0;
+          rightModLastTapModifier = null;
+          windowManager.sendStopDictation();
+        } else {
+          const now = Date.now();
+          if (
+            modifier === rightModLastTapModifier &&
+            now - rightModLastTapTime <= DOUBLE_TAP_THRESHOLD_MS
+          ) {
+            rightModLastTapTime = 0;
+            rightModLastTapModifier = null;
+            if (textEditMonitor) textEditMonitor.captureTargetPid();
+            windowManager.sendToggleDictation();
+          } else {
+            rightModLastTapTime = now;
+            rightModLastTapModifier = modifier;
+          }
+        }
       } else {
         windowManager.sendToggleDictation();
       }
@@ -1588,9 +1626,12 @@ async function startApp() {
       globeKeyDownTime = 0;
       globeKeyIsRecording = false;
       globeLastStopTime = 0;
+      globeLastTapTime = 0;
       rightModDownTime = 0;
       rightModIsRecording = false;
       rightModLastStopTime = 0;
+      rightModLastTapTime = 0;
+      rightModLastTapModifier = null;
       mouseButtonDownTime = 0;
       mouseButtonIsRecording = false;
       mouseButtonLastStopTime = 0;

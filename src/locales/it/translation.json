@@ -164,6 +164,7 @@
     "hold": "Tieni premuto",
     "private": "Privato",
     "tap": "Tocca",
+    "doubleTap": "Doppio tocco",
     "close": "Chiudi",
     "dismiss": "Ignora",
     "save": "Salva",
@@ -231,9 +232,11 @@
       "mode": "Modalità",
       "tapDescription": "Premi per avviare/fermare",
       "holdDescription": "Tieni premuto mentre parli",
+      "doubleTapDescription": "Tocca due volte per avviare, una volta per fermare",
       "test": "Test",
       "hotkeyToStartStop": "{{hotkey}} per avviare/fermare",
       "holdHotkey": "Tieni premuto {{hotkey}}",
+      "doubleTapHotkey": "Tocca due volte {{hotkey}} per avviare, una volta per fermare",
       "textareaPlaceholder": "Clicca qui e usa la scorciatoia per dettare..."
     },
     "voiceAgent": {

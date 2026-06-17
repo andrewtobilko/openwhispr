@@ -164,6 +164,7 @@
     "hold": "Hold",
     "private": "Private",
     "tap": "Tap",
+    "doubleTap": "Double tap",
     "close": "Close",
     "dismiss": "Dismiss",
     "save": "Save",
@@ -231,9 +232,11 @@
       "mode": "Mode",
       "tapDescription": "Press to start/stop",
       "holdDescription": "Hold while speaking",
+      "doubleTapDescription": "Double-tap to start, tap to stop",
       "test": "Test",
       "hotkeyToStartStop": "{{hotkey}} to start/stop",
       "holdHotkey": "Hold {{hotkey}}",
+      "doubleTapHotkey": "Double-tap {{hotkey}} to start, tap to stop",
       "textareaPlaceholder": "Click here and use your hotkey to dictate..."
     },
     "voiceAgent": {
